@@ -1,0 +1,80 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+
+    --bg: #fcfcfc;
+    --bg-card: #ebebeb;
+    --color-title: #0077ff;
+    --color-text: #333333;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+.card {
+    background-color: var(--bg-card);
+
+    margin: 5em;
+    padding: 5em;
+    border-radius: 15px;
+
+    display: grid;
+    grid-template-columns: 67% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "title toggle"
+        "content content" 
+    ;
+}
+
+h2 {
+    margin: 0;
+    color: var(--color-title);
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background-color: gray;
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+label::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px; 
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label {
+    background-color: var(--color-title);
+}
+input:checked + label::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label:active:after {
+    width: 45px;
+}
